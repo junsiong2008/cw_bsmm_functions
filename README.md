@@ -47,7 +47,9 @@ The Firebase function will start running on a local emulator.
 ## Function
 The only function in `index.ts` file is `onParticipantUpdate`. This function is triggered whenever a document in the `participants` collection is updated in Firebase Firestore. 
 
-If the value of the `isPaid` field is updated from `false` to `true`, the function will contruct an email and create a new document in the `emails` collection. Then, The Firebase Trigger Email extension will be triggered to send the email to the user.
+If the value of the `isPaid` field is updated from `false` to `true`, the function will contruct an email and create a new document in the `emails` collection. Then, the Firebase Trigger Email extension will be triggered to send the email to the user.
+
+<br/>
 
 ## Triggering the function in Firebase Emulator
 To trigger the function in Firebase Emulator for testing:

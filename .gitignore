@@ -65,5 +65,3 @@ node_modules/
 # dotenv environment variables file
 .env
 
-# SMTP secrets
-extensions/firestore-send-email.secret.local
