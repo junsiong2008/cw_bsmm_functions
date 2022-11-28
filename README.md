@@ -7,7 +7,7 @@ This repository stores the source code for a simple Firebase function used for T
 <br/>
 
 ## Pre-requisites
-This project project uses the following SDKs:
+This project uses the following SDKs:
 ```
 "firebase-admin": "^10.0.2",
 "firebase-functions": "^3.18.0"
@@ -45,9 +45,9 @@ The Firebase function will start running on a local emulator.
 <br/>
 
 ## Function
-The only function in `index.ts` file is `onParticipantUpdate`. This functionis triggered whenever an update is made on any document the `participants` collection in Firebase Firestore. 
+The only function in `index.ts` file is `onParticipantUpdate`. This function is triggered whenever a document in the `participants` collection is updated in Firebase Firestore. 
 
-If the value of the `isPaid` field is updated from `false` to `true`, the function will contruct an email and saves its content to the `emails` collection. The Firebase Trigger Email extension will be triggered to send the email to the user.
+If the value of the `isPaid` field is updated from `false` to `true`, the function will contruct an email and create a new document in the `emails` collection. Then, The Firebase Trigger Email extension will be triggered to send the email to the user.
 
 ## Triggering the function in Firebase Emulator
 To trigger the function in Firebase Emulator for testing:
@@ -55,12 +55,14 @@ To trigger the function in Firebase Emulator for testing:
 1. Configure your SMTP service settings in the `extensions/firestore-send-email.env` file.
 
 2.  In the `functions` directory, run `firebase init emulators`.
+
 3. Ensure that the following emulators are selected:
 
     Emulator | Description | 
     ---------| -----------| 
     Firestore Emulator| To create and update test documents into the `participants` and `templates` collection.
     Function Emulator | To test and trigger the Firebase function.
+
 4. Start the emulators in the local machine:
    ```
    firebase emulators:start
@@ -95,7 +97,7 @@ To trigger the function in Firebase Emulator for testing:
     attachments | array of map |  [0]: filename: qr_{{ticketNumber}}.png, path: https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{ticketNumber}}&choe=UTF-8z
     html | string | <copy-the-content-of-`email.html`-here>
     
-9. In the Firestore emulator, change the  value of `isPaid` to `true`.
+9. In the Firestore emulator, change the value of `isPaid` to `true`.
 
 10. Check the logs of the Function emulator to see that the function has been triggered.
 
